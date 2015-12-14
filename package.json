@@ -1,0 +1,19 @@
+{
+  "name": "docker-proxy",
+  "version": "1.0.0",
+  "description": "Ultra simple docker proxying (for Mac)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "bin": {
+    "docker-proxy": "./bin/docker-proxy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "proxim": "^1.0.4",
+    "tcp-proxy": "0.0.1"
+  }
+}

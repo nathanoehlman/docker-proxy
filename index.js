@@ -33,10 +33,17 @@ function refresh(callback) {
 				console.log('Establishing proxy from %s to %s:%s', listenPort, ip, listenPort);
 				proxies[listenPort] = {host: ip, port: listenPort, xim: xim};
 				xim.on('listening', function(port, host) {
-					console.log('Proxy established on %s:%s', port, host);
+					console.log('Proxy established on %s:%s', host, port);
 				});
 				xim.on('proxy:established', function(socket, proxy, target) {
 					console.log('Connection has been proxied to %s:%s', target.host, target.port);
+				});
+				xim.on('error', function(err, connection, target) {
+					if (target) {
+						console.log('Error proxying from %s to %s:%s [%s]', listenPort, target.host, target.port, err.message || err);
+					} else {
+						console.log('Error proxying from %s [%s]', listenPort, err.message || err);
+					}
 				});
 			}
 		});

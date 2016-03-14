@@ -28,6 +28,7 @@ function refresh(callback) {
 			if (!entry.PORTS) return;
 
 			var listenPort = entry.PORTS.split('->')[0].split(':')[1];
+			if (!listenPort) return;
 			if (!proxies[listenPort]) {
 				var xim = proxim.from(listenPort).to({ host: ip, port: listenPort });
 				console.log('Establishing proxy from %s to %s:%s', listenPort, ip, listenPort);
